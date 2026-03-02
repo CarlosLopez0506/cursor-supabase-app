@@ -2,7 +2,7 @@
 
 import pickle
 import numpy as np
-import os
+from pathlib import Path
 
 class Predictor:
     def __init__(self):
@@ -12,14 +12,15 @@ class Predictor:
         self._load_model()
 
     def _load_model(self):
-        # Busca el modelo en la carpeta model/
-        model_path = os.path.join(os.path.dirname(__file__), '../../model/model.pkl')
+        # Path relativo al script: app/services/ -> ml-api/model/model.pkl
+        script_dir = Path(__file__).resolve().parent
+        model_path = script_dir.parent.parent / "model" / "model.pkl"
         
-        if not os.path.exists(model_path):
+        if not model_path.exists():
             print("⚠️  model.pkl no encontrado — el servidor arrancará sin modelo")
             return
         
-        with open(model_path, 'rb') as f:
+        with open(str(model_path), 'rb') as f:
             data = pickle.load(f)
         
         self.model = data['model']
@@ -30,6 +31,10 @@ class Predictor:
     @property
     def is_loaded(self):
         return self.model is not None
+
+    def load_model(self):
+        """Reload model (e.g. on startup)."""
+        self._load_model()
 
     def predict(self, input_data: dict) -> dict:
         # Construye el vector de features en el orden correcto
@@ -56,3 +61,7 @@ class Predictor:
                 'fail': float(probabilities[0])
             }
         }
+
+
+# Singleton instance for use in routes and main app
+predictor = Predictor()

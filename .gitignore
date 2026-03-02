@@ -25,8 +25,9 @@ venv/
 ml-api/venv/
 .env/
 
-# ML model (user trains their own)
-ml-api/model/model.pkl
+# ML model - comentar para incluir model.pkl en el repo (necesario para Render)
+# Si quieres excluir model.pkl del repo, descomenta la siguiente línea:
+# ml-api/model/model.pkl
 
 # IDE
 .idea/
