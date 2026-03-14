@@ -59,7 +59,55 @@ export function useSupabase(tableName, filters = {}, order = null, limit = null)
 
       const { data: rows, error: err } = await query
 
-      if (err) throw err
+      if (err) {
+        // #region agent log
+        fetch('http://127.0.0.1:7880/ingest/7232c866-1cb8-4790-a571-c910d66c0e38', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Debug-Session-Id': '0d4ff0',
+          },
+          body: JSON.stringify({
+            sessionId: '0d4ff0',
+            runId: 'supabase-fetch',
+            hypothesisId: 'H1-network-or-permission',
+            location: 'frontend/src/hooks/useSupabase.js:60',
+            message: 'Supabase query error',
+            data: {
+              tableName,
+              filters,
+              errorMessage: err.message,
+              errorName: err.name,
+            },
+            timestamp: Date.now(),
+          }),
+        }).catch(() => {})
+        // #endregion agent log
+        throw err
+      }
+
+      // #region agent log
+      fetch('http://127.0.0.1:7880/ingest/7232c866-1cb8-4790-a571-c910d66c0e38', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Debug-Session-Id': '0d4ff0',
+        },
+        body: JSON.stringify({
+          sessionId: '0d4ff0',
+          runId: 'supabase-fetch',
+          hypothesisId: 'H2-success-shape',
+          location: 'frontend/src/hooks/useSupabase.js:74',
+          message: 'Supabase query success',
+          data: {
+            tableName,
+            rowCount: Array.isArray(rows) ? rows.length : null,
+          },
+          timestamp: Date.now(),
+        }),
+      }).catch(() => {})
+      // #endregion agent log
+
       setData(rows || [])
     } catch (err) {
       setError(err)

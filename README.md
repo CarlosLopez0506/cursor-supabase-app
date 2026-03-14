@@ -1,3 +1,40 @@
+<h1 align="center">🎓 EduInsights — Student Performance Analytics</h1>
+
+<p align="center">
+  <strong>Full-stack data analytics platform with ML predictions, built with React, Supabase & FastAPI</strong>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vite-5-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
+  <img src="https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" />
+  <img src="https://img.shields.io/badge/FastAPI-Python-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
+  <img src="https://img.shields.io/badge/scikit--learn-RandomForest-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white" />
+  <img src="https://img.shields.io/badge/Recharts-Visualizations-FF6B6B?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Deployed-Render-46E3B7?style=for-the-badge&logo=render&logoColor=white" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" />
+  <img src="https://img.shields.io/badge/Status-Live-brightgreen?style=flat-square" />
+  <img src="https://img.shields.io/badge/ML%20API-Online-brightgreen?style=flat-square" />
+</p>
+
+---
+
+## ✨ What it does
+
+**EduInsights** is an end-to-end analytics platform that lets you explore, visualize, and predict student academic performance across 1,000 students.
+
+| Feature | Description |
+|---|---|
+| 📊 **Interactive Dashboard** | KPI cards + 4 chart types (bar, line, scatter, pie) powered by Recharts |
+| 🔍 **Data Explorer** | Filterable, sortable, searchable table with CSV export |
+| 🤖 **ML Predictor** | Random Forest model predicts math pass/fail with confidence score |
+| ☁️ **Cloud-native** | Supabase (PostgreSQL) + Render (ML API) + Vite frontend |
+
+---
+
 # cursor-supabase-app
 
 ![React](https://img.shields.io/badge/React-Vite-61DAFB?style=flat&logo=react&logoColor=black)
@@ -120,3 +157,19 @@ With the project rules in `.cursor/rules/`, Cursor understands the stack. Exampl
 3. **`frontend/src/pages/DataExplorer.jsx`** — Update `TABLE_NAME`, `COLUMNS`, `FILTER_CONFIG`.
 4. **`ml-api/scripts/train.py`** — Set `CSV_FILE`, `TARGET_COLUMN`, `FEATURE_COLUMNS`.
 5. **`frontend/src/pages/Predictor.jsx`** — Set `PREDICTOR_FIELDS` and `MODEL_DESCRIPTION`.
+
+## Stitch Design Assets (Dashboard Principal)
+
+If you use Google Stitch to generate the **Dashboard Principal** screen described in `PRD.md`, store the exported assets under:
+
+- `design/stitch/dashboard-principal/` — screenshot and HTML/CSS reference from Stitch.
+
+Example download commands (replace the URLs with the ones Stitch gives you):
+
+```bash
+curl -L "https://stitch.example.com/path/to/screenshot.png" -o design/stitch/dashboard-principal/dashboard-principal.png
+
+curl -L "https://stitch.example.com/path/to/dashboard.html" -o design/stitch/dashboard-principal/dashboard-principal.html
+```
+
+The live dashboard implementation lives in `frontend/src/pages/Dashboard.jsx` and `frontend/src/pages/Dashboard.module.css`, which follow the PRD structure and use mock student data by default. Later you can swap the mock data for real Supabase queries using the `students` table.
