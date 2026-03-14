@@ -1,6 +1,12 @@
 # cursor-supabase-app
 
-A production-ready template for building data visualization applications with React, Supabase, and ML. Clone this repo and start building your own app using Cursor AI as your primary development tool.
+![React](https://img.shields.io/badge/React-Vite-61DAFB?style=flat&logo=react&logoColor=black)
+![Supabase](https://img.shields.io/badge/Supabase-Database-3ECF8E?style=flat&logo=supabase&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-ML%20API-009688?style=flat&logo=fastapi&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white)
+![Cursor](https://img.shields.io/badge/Cursor-AI--first-000000?style=flat)
+
+Full-stack template for building data visualization applications with React, Supabase, and a FastAPI ML backend. Designed to be used with Cursor AI — the project rules and MCP config are already wired so Cursor understands the stack and can extend it from a prompt.
 
 ## What This Is
 
